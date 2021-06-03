@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import kodlamaio.hrms.entities.concretes.User;
 
-public interface UserDao extends JpaRepository<User, Integer> {
-	boolean getByEmail(String email);
+public interface EmployeeDao extends JpaRepository<User, Integer>{
+
 }

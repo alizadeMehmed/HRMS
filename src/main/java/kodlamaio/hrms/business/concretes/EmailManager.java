@@ -26,6 +26,8 @@ public class EmailManager implements EmailService {
 	@Override
 	public boolean isEmailActivated(String email) {
 		// Email Activation Simulation
+		//Buraya daha sonra doğrulama kodu ile ilgili işlemler yapılacak
+		//Doğrulama kodu oluşturma ve isActivated bölümüne giriş yapılacak
 		return true;
 	}
 	

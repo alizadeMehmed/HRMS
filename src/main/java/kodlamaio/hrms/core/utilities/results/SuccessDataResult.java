@@ -1,5 +1,8 @@
 package kodlamaio.hrms.core.utilities.results;
 
+import java.util.List;
+
+import kodlamaio.hrms.entities.concretes.User;
 
 public class SuccessDataResult<T> extends DataResult<T> {
 
@@ -16,7 +19,6 @@ public class SuccessDataResult<T> extends DataResult<T> {
 	}
 
 	public SuccessDataResult() {
-			super(null, true);
-		}
-
+		super(null, true);
 	}
+}

@@ -15,15 +15,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "job_titles")
-public class JobTitle {
+@Table(name = "cities")
+public class City {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	@Column(name = "id")
-	private int titleId;
+	private int id;
 
-	@Column(name = "title")
-	private String titleName;
+	@Column(name = "city_name")
+	private String name;
+
+
+	
+
+	
+
 }

@@ -1,10 +1,15 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -15,15 +20,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "job_titles")
-public class JobTitle {
+@PrimaryKeyJoinColumn(name= "id")
+@Table(name = "verification_code_candidates")
+public class VerificationCodeCandidate extends VerifcationCode{
+		
+	@Column(name = "candidate_id")
+	private int candidateId;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
-	@Column(name = "id")
-	private int titleId;
-
-	@Column(name = "title")
-	private String titleName;
 }

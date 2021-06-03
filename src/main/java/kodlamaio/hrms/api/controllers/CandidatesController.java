@@ -9,31 +9,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.ApplicantUserService;
+import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.ApplicantUser;
+import kodlamaio.hrms.entities.concretes.Candidate;
 
 @RestController
-@RequestMapping("/api/applicants")
-public class ApplicantUsersController {
+@RequestMapping("/api/candidates")
+public class CandidatesController {
 
-	private ApplicantUserService applicantUserService;
+	private CandidateService candidateService;
 
 	@Autowired
-	public ApplicantUsersController(ApplicantUserService applicantUserService) {
+	public CandidatesController(CandidateService candidateService) {
 		super();
-		this.applicantUserService = applicantUserService;
+		this.candidateService = candidateService;
 	}
 
 	@GetMapping("/getall")
-	public DataResult<List<ApplicantUser>> getAll() {
-		return this.applicantUserService.getAll();
+	public DataResult<List<Candidate>> getAll() {
+		return this.candidateService.getAll();
 	}
 
 	@PostMapping("/add")
-	public Result add(@RequestBody ApplicantUser applicantUser) {
-		return this.applicantUserService.add(applicantUser);
+	public Result add(@RequestBody Candidate candidate) {
+		return this.candidateService.add(candidate);
 
 	}
 
