@@ -5,6 +5,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -36,5 +37,9 @@ public class Employer extends User {
 	@NotNull
 	@NotBlank
 	private String phoneNumber;
+	
+	@ManyToOne()
+	@JoinColumn(name= "job_advertisement_id")
+	private JobAdvertisement jobAdvertisement;
 	
 }

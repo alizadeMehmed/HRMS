@@ -58,20 +58,20 @@ public class EmployerManager implements EmployerService {
 	}
 
 	@Override
-	public Result add(Employer employerUser) {
-		if (fieldIsNull(employerUser)) {
+	public Result add(Employer employer) {
+		if (fieldIsNull(employer)) {
 			return new ErrorResult("Tüm alanlar zorunludur");
 		}
-		if (isEmailCompanyEmail(employerUser) == false) {
+		if (isEmailCompanyEmail(employer) == false) {
 			return new ErrorResult("Girmiş olduğunuz eposta, web sitesi ile aynı domaine sahip olmalıdır.");
 		}
-		if (!emailService.isEmailValid(employerUser.getEmail())) {
+		if (!emailService.isEmailValid(employer.getEmail())) {
 			return new ErrorResult("Email adresi hatalıdır");
 		}
-		if (employerDao.existsByEmail(employerUser.getEmail())) {
+		if (employerDao.existsByEmail(employer.getEmail())) {
 			return new ErrorResult("Girmiş olduğunuz email sisteme kayıtlıdır");
 		}
-		if (emailService.isEmailActivated(employerUser.getEmail()) == false) {
+		if (emailService.isEmailActivated(employer.getEmail()) == false) {
 			// Burada HrmsConfirms tablolarına ekleme yapılacak
 			return new ErrorResult("Lütfen Mailinize Gelen Aktivasyon Linkine Tıklayınız");
 //		} else if (emailService.isEmailActivated(employerUser.getEmail())) {
@@ -80,7 +80,7 @@ public class EmployerManager implements EmployerService {
 		if (hrmsValidationService.isValid() == false) {
 			return new ErrorResult("HRMS Doğrulaması Yapılamadı. Lütfen Bilgi işlem birimine müracaat ediniz!");
 		}
-		this.employerDao.save(employerUser);
+		this.employerDao.save(employer);
 		return new SuccessResult("İş Veren Eklendi: ");
 
 	}
