@@ -1,6 +1,7 @@
 package kodlamaio.hrms.entities.concretes;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,18 +19,28 @@ import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
-
+@Table(name = "job_advertisements")
+@Entity
 public class JobAdvertisement {
+
+	public JobAdvertisement(@NotNull @NotBlank String description, @NotNull @NotBlank int openPositionCount,
+			LocalDate lastRegisterDate, List<JobTitle> jobTitles, List<City> cities) {
+		super();
+		this.description = description;
+		this.openPositionCount = openPositionCount;
+		this.lastRegisterDate = lastRegisterDate;
+		this.jobTitles = jobTitles;
+		this.cities = cities;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "job_advertisement_id")
 	@NotNull
 	@NotBlank
 	private int id;
@@ -39,7 +50,7 @@ public class JobAdvertisement {
 	@NotBlank
 	private String name;
 
-	@Column(name = "job_advertisement_description")
+	@Column(name = "job_description")
 	@NotNull
 	@NotBlank
 	private String description;
@@ -49,27 +60,28 @@ public class JobAdvertisement {
 
 	@Column(name = "max_salary")
 	private double maxSalary;
-	
+
 	@Column(name = "open_position_count")
 	@NotNull
 	@NotBlank
 	private int openPositionCount;
-	
-	@Column(name= "posting_date")
-	private LocalDate postingDate;
-	
-	@Column(name= "last_register_date")
+
+	@Column(name = "posting_date")
+	private LocalDate postingDate = LocalDate.now();
+
+	@Column(name = "last_register_date")
 	private LocalDate lastRegisterDate;
-	
+
 	@Column(name = "is_active")
 	private boolean isActive;
-	
-	@OneToMany(mappedBy= "employer")
-	private List<Employer> employers;
-	
-	@OneToMany(mappedBy= "job_titles")
-	private List<JobTitle> jobtitles;
-	
-	@OneToMany(mappedBy= "cities")
+
+	@OneToMany(mappedBy = "jobAdvertisement")
+	private List<JobTitle> jobTitles;
+
+	@OneToMany(mappedBy = "jobAdvertisement")
 	private List<City> cities;
+
+	@OneToMany(mappedBy = "jobAdvertisement")
+	private List<Employer> employers;
+
 }

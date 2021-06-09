@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobAdvertisementWithEmployerWithJobTitleDto {
+public class JobAdvertisementWithDetailsDto {
 	private String companyName;
-	private String jobTitleName;
+	private String titleName;
 	private int openPositionCount;
 	private LocalDate postingDate;
 	private LocalDate lastRegisterDate;

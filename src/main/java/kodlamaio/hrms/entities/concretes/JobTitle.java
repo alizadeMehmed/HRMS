@@ -26,16 +26,18 @@ public class JobTitle {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	@Column(name = "id")
 	private int titleId;
 
 	@Column(name = "title")
 	private String titleName;
 	
+	//İlerleyen süreçte OneToOne ilişkilendirmesi yapılacak
+	@Column(name = "employer_id")
+	private int employerId;
+	
 	@ManyToOne()
 	@JoinColumn(name= "job_advertisement_id")
 	private JobAdvertisement jobAdvertisement;
-	
 	
 }
