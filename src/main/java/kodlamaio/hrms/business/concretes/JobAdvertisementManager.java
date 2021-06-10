@@ -1,6 +1,6 @@
 package kodlamaio.hrms.business.concretes;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.City;
-import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
-import kodlamaio.hrms.entities.concretes.JobTitle;
 import kodlamaio.hrms.entities.dtos.JobAdvertisementWithDetailsDto;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
@@ -31,8 +28,6 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	
 	@Override
 	public Result add(JobAdvertisement jobAdvertisement) {
-		List<City> cities = jobAdvertisement.getCities();
-		List<JobTitle> jobTitles = jobAdvertisement.getJobTitles();
 		this.jobAdvertisementDao.save(jobAdvertisement);
 		return new SuccessResult("İş ilanı eklendi");
 	}
@@ -71,6 +66,18 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	public DataResult<List<JobAdvertisementWithDetailsDto>> getAllSortedByPostingDateDesc() {
 		return new SuccessDataResult<List<JobAdvertisementWithDetailsDto>>(
 				this.jobAdvertisementDao.getByIsActiveOrderByPostingDateDesc(true), "Data Listelendi");
+	}
+
+	@Override
+	public Result deleteByName(String name) {
+		this.jobAdvertisementDao.deleteByName(name);
+		return new SuccessResult("İş ilanı silindi");
+	}
+
+	@Override
+	public Result deactivate(String name) {
+		this.jobAdvertisementDao.deactivateJobAdvertisementByName(name);
+		return new SuccessResult("İş ilanı pasif hale getirildi");
 	}
 
 }

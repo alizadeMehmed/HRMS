@@ -14,6 +14,10 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementWithDetailsDto;
 public interface JobAdvertisementService {
 	Result add(JobAdvertisement jobAdvertisement);
 
+	Result deleteByName(String name);
+
+	Result deactivate(String name);
+
 	DataResult<List<JobAdvertisement>> getAll();
 
 	DataResult<List<JobAdvertisementWithDetailsDto>> jobAdvertisementWithDetails();
@@ -23,7 +27,7 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisementWithDetailsDto>> getAllByIsActiveAndEmployer(boolean isActive, String companyName);
 
 	DataResult<List<JobAdvertisementWithDetailsDto>> getAllSortedByPostingDateAsc();
-	
+
 	DataResult<List<JobAdvertisementWithDetailsDto>> getAllSortedByPostingDateDesc();
-	
+
 }
