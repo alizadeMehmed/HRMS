@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,26 +20,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "job_titles")
-public class JobTitle {
-
+@Table(name = "language_levels")
+public class LanguageLevel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int titleId;
-
-	@Column(name = "title")
-	private String titleName;
+	@Column(name = "level_id")
+	private int levelId;
 	
-	//İlerleyen süreçte OneToOne ilişkilendirmesi yapılacak
-	@Column(name = "employer_id")
-	private int employerId;
+	@Column(name = "level_name")
+	private String levelName;
 	
 	@ManyToOne()
-	@JoinColumn(name= "job_advertisement_id")
-	private JobAdvertisement jobAdvertisement;
+	@JoinColumn(name= "language_id")
+	private Language language;
 	
-	@ManyToOne()
-	@JoinColumn(name= "experience_id")
-	private Experience experience;
 }

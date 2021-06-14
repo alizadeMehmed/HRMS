@@ -18,27 +18,29 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementWithDetailsDto;
 public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Integer> {
 
 	@Query("Select new kodlamaio.hrms.entities.dtos.JobAdvertisementWithDetailsDto"
-			+ "(e.companyName, t.titleName, j.openPositionCount, j.postingDate, j.lastRegisterDate)"
+			+ "(e.companyName, t.titleName, j.openPositionCount, j.postingDate, j.lastRegisterDate) "
 			+ "From JobAdvertisement j " + "Inner Join j.jobTitles t " + "Inner Join j.employers e")
 	List<JobAdvertisementWithDetailsDto> getByIsActive(boolean isActive);
 
 	@Query("Select new kodlamaio.hrms.entities.dtos.JobAdvertisementWithDetailsDto"
-			+ "(e.companyName, t.titleName, j.openPositionCount, j.postingDate, j.lastRegisterDate)"
+			+ "(e.companyName, t.titleName, j.openPositionCount, j.postingDate, j.lastRegisterDate) "
 			+ "From JobAdvertisement j " + "Inner Join j.jobTitles t " + "Inner Join j.employers e")
 	List<JobAdvertisementWithDetailsDto> getByIsActiveAndEmployers_companyName(boolean isActive, String companyName);
 
 	@Query("Select new kodlamaio.hrms.entities.dtos.JobAdvertisementWithDetailsDto"
-			+ "(e.companyName, t.titleName, j.openPositionCount, j.postingDate, j.lastRegisterDate)"
-			+ "From JobAdvertisement j " + "Inner Join j.jobTitles t " + "Inner Join j.employers e")
+			+ "(e.companyName, t.titleName, j.openPositionCount, j.postingDate, j.lastRegisterDate) "
+			+ "From JobAdvertisement j " + "Inner Join j.jobTitles t " + "Inner Join j.employers e "
+			+"Order By j.postingDate asc")
 	List<JobAdvertisementWithDetailsDto> getByIsActiveOrderByPostingDateAsc(boolean isActive);
 
 	@Query("Select new kodlamaio.hrms.entities.dtos.JobAdvertisementWithDetailsDto"
-			+ "(e.companyName, t.titleName, j.openPositionCount, j.postingDate, j.lastRegisterDate)"
-			+ "From JobAdvertisement j " + "Inner Join j.jobTitles t " + "Inner Join j.employers e")
+			+ "(e.companyName, t.titleName, j.openPositionCount, j.postingDate, j.lastRegisterDate) "
+			+ "From JobAdvertisement j " + "Inner Join j.jobTitles t " + "Inner Join j.employers e "
+			+"Order By j.postingDate Desc" )
 	List<JobAdvertisementWithDetailsDto> getByIsActiveOrderByPostingDateDesc(boolean isActive);
 
 	@Query("Select new kodlamaio.hrms.entities.dtos.JobAdvertisementWithDetailsDto"
-			+ "(e.companyName, t.titleName, j.openPositionCount, j.postingDate, j.lastRegisterDate)"
+			+ "(e.companyName, t.titleName, j.openPositionCount, j.postingDate, j.lastRegisterDate) "
 			+ "From JobAdvertisement j " + "Inner Join j.jobTitles t " + "Inner Join j.employers e")
 	List<JobAdvertisementWithDetailsDto> getJobAdvertisementWithEmployersAndJobTitlesDetails();
 

@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -21,26 +20,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "job_titles")
-public class JobTitle {
-
+@Table(name = "candidate_educations")
+public class CandidateEducation {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int titleId;
-
-	@Column(name = "title")
-	private String titleName;
+	private int id;
 	
-	//İlerleyen süreçte OneToOne ilişkilendirmesi yapılacak
-	@Column(name = "employer_id")
-	private int employerId;
+	@Column(name = "school_name")
+	private String schoolName;
 	
-	@ManyToOne()
-	@JoinColumn(name= "job_advertisement_id")
-	private JobAdvertisement jobAdvertisement;
+	@Column(name = "faculty_name")
+	private String facultyName;
+	
+	@Column(name = "graduate_date")
+	private String graduateDate;
 	
 	@ManyToOne()
-	@JoinColumn(name= "experience_id")
-	private Experience experience;
+	@JoinColumn(name= "curriculum_vitae_id")
+	private CurriculumVitaeForCandidate curriculumVitaeForCandidate;
+	
+	@ManyToOne()
+	@JoinColumn(name= "candidate_id")
+	private Candidate candidate;
 }
