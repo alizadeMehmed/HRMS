@@ -12,6 +12,7 @@ public interface CurriculumVitaeForCandidateService {
 	DataResult<List<CvWithCandidateAndEducationDto>> getCvWithCandidateAndEducationOrderByGraduateYear();
 	DataResult<List<CvWithCandidateAndExperienceWithDetailsDto>> getCvWithCandidateAndExperienceWithDetailsOrderByExperienceYear();
 	DataResult<List<CurriculumVitaeForCandidate>> getAll();
+	DataResult<List<CurriculumVitaeForCandidate>> getByIdentityNumber(String identityNumber);
 	Result add(CurriculumVitaeForCandidate curriculumVitaeForCandidate);
 	
 	

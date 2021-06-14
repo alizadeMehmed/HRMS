@@ -44,6 +44,11 @@ public class CurriculumVitaeForCandidatesController {
 	DataResult<List<CvWithCandidateAndExperienceWithDetailsDto>> getCvWithCandidateAndExperienceWithDetailsOrderByExperienceYear() {
 		return this.curriculumVitaeForCandidateService.getCvWithCandidateAndExperienceWithDetailsOrderByExperienceYear();
 	}
+	@GetMapping("/getByIdentityNumber")
+	public DataResult<List<CurriculumVitaeForCandidate>> getByIdentityNumber(String identityNumber){
+		return this.curriculumVitaeForCandidateService.getByIdentityNumber(identityNumber);
+		
+	}
 	
 	@PostMapping("/add")
 	public Result add(@RequestBody CurriculumVitaeForCandidate curriculumVitaeForCandidate) {

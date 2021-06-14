@@ -51,4 +51,9 @@ public class CurriculumVitaeForCandidateManager implements CurriculumVitaeForCan
 		return new SuccessResult("Adaya ait cv girişi başarıyla tamamlandı");
 	}
 
+	@Override
+	public DataResult<List<CurriculumVitaeForCandidate>> getByIdentityNumber(String identityNumber) {
+		return new SuccessDataResult<List<CurriculumVitaeForCandidate>>(this.cvForCandidateDao.getByIdentityNumber(identityNumber));
+	}
+
 }

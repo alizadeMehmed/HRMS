@@ -31,4 +31,11 @@ public interface CurriculumVitaeForCandidateDao extends JpaRepository<Curriculum
 			+ "Inner Join cv.experiences exp "
 			+ "Order By exp.experienceYear desc")
 	List<CvWithCandidateAndExperienceWithDetailsDto> getCvWithCandidateAndExperienceWithDetailsOrderByExperienceYear();
+	
+	
+	@Query("From CurriculumVitaeForCandidate cv "
+			+ "Inner Join cv.candidates cnd "
+			+ "Inner Join cv.experiences exp "
+			+ "where cnd.identityNumber= : identityNumber")
+	List<CurriculumVitaeForCandidate> getByIdentityNumber(String identityNumber);
 }
